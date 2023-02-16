@@ -378,7 +378,7 @@ const game = new Phaser.Game({
         if (score >= 16) {
           lifeSound()
           if ($world.life < 3) $world.life++
-          projectileScale += 0.05
+          projectileScale += 0.1
         }
 
         $world.score += score
@@ -439,7 +439,7 @@ const game = new Phaser.Game({
           }
           $world.score *= 2
           $world.hasShield = true
-          $world.projectileScale += 0.2
+          projectileScale += 0.4
 
           this.tweens.add({
             targets: shield,
@@ -491,7 +491,7 @@ const game = new Phaser.Game({
 
       if ($world.showBoss) {
         foes.children.iterate(foe => {
-          foe.rotation = foe.body.angle + Math.PI / 2
+          if (foe.body.velocity.y > 0) foe.rotation = foe.body.angle + Math.PI / 2
         })
       }
 
