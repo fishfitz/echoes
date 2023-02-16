@@ -1,0 +1,45 @@
+@font-face {
+  font-family: "batm";
+  src: url(../fonts/batm.ttf);
+}
+
+body {
+  background-color: black;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  color: white!important;
+  text-align: center;
+  font-family: batm;
+  font-size: 18pt;
+}
+
+.centered {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.full-h {
+  height: 100%;
+}
+
+.full-w {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: white!important;
+}
+
+.blink {
+  animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

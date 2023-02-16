@@ -1,0 +1,31 @@
+{
+  "name": "echoes",
+  "version": "1.0.0",
+  "description": "48h project for Emotional Game Jam 2023.",
+  "scripts": {
+    "build": "carni",
+    "dev": "carni dev"
+  },
+  "author": "FitzFish",
+  "license": "ISC",
+  "dependencies": {
+    "@vueuse/core": "^9.12.0",
+    "all-of-just": "^0.18.0",
+    "carni": "^0.0.21",
+    "carni-audio": "^0.0.1",
+    "just-random-integer": "^4.2.0",
+    "phaser": "^3.55.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "eslint": "^8.0.1",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-vue": "^9.1.0",
+    "postcss": "^8.4.21",
+    "postcss-loader": "^7.0.2",
+    "tailwindcss": "^3.2.6"
+  }
+}

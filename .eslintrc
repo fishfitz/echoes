@@ -1,0 +1,33 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "plugin:vue/essential",
+    "standard"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "vue"
+  ],
+  "rules": {
+    "vue/multi-word-component-names": 0,
+    "vue/require-v-for-key": 0
+  },
+  "globals": {
+    "$ref": "readonly",
+    "$computed": "readonly",
+    "$shallowRef": "readonly",
+    "$customRef": "readonly",
+    "$toRef": "readonly",
+    "$story": "readonly",
+    "$world": "readonly",
+    "$ui": "readonly",
+    "onMounted": "readonly"
+  }
+}
