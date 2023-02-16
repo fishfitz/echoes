@@ -1,5 +1,5 @@
 <template>
-  <view-link to="loading" class="end centered">
+  <view-link to="loading" class="end centered" @click="refresh">
     <span style="font-size: 38pt;">
       {{ $world.life <= 0 ? 'You\'ll do better next time!' : 'You made it!' }}
     </span>
@@ -26,6 +26,12 @@
     <span class="blink">Click to play again!</span>
   </view-link>
 </template>
+
+<script setup>
+const refresh = () => {
+  window.location.reload()
+}
+</script>
 
 <style lang="scss" scoped>
 .end {
