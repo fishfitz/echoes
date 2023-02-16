@@ -292,7 +292,8 @@ const game = new Phaser.Game({
 
         if (pointer.event.clientY * 1.05 >= origin.y) return
 
-        const projectile = this.physics.add.sprite(bat.x, bat.y - 80, 'projectile').setScale(projectileScale)
+        const projectile = this.physics.add.sprite(bat.x, bat.y - 80, 'projectile')
+        // .setScale(projectileScale)
         projectiles.add(projectile)
 
         projectile.setDataEnabled()
@@ -304,7 +305,7 @@ const game = new Phaser.Game({
 
         projectile.setCollideWorldBounds(true)
         projectile.setBounce(1)
-      }, 600)
+      }, 500)
 
       const damageFoe = (foe, projectile) => {
         hitSound()
