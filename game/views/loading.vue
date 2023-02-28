@@ -9,9 +9,14 @@
       <img class="title" :src="title"/>
       <img class="background" :src="background"/>
       <img class="bat" :src="backgroundBat"/>
-
       <span class="clickto blink"> Click to start </span>
     </view-link>
+
+    <span class="credits full-w">
+        <a href="https://fitz.fish/" target="_blank"> Code & Sound by Fitz Fish </a>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://www.artstation.com/alexandrebrard8" target="_blank"> Art by Alexandre Brard </a>
+      </span>
   </div>
 </template>
 
@@ -66,5 +71,15 @@ onMounted(() => {
   bottom: 125px;
   color: #9C87E0;
   font-size: 26pt;
+}
+
+.credits {
+  color: white;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12pt;
+  text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px rgba(156, 135, 224, .5), 0 0 4px rgba(156, 135, 224, .5), 0 0 5px rgba(156, 135, 224, .5), 0 0 6px rgba(156, 135, 224, .5), 0 0 7px rgba(156, 135, 224, .5);
 }
 </style>

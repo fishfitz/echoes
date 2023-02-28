@@ -147,7 +147,9 @@ const game = new Phaser.Game({
 
         bat.setVelocityY(0)
         topWall.setVelocityY(0)
+        topWall.disableBody()
         bottomWall.setVelocityY(0)
+        bottomWall.disableBody()
 
         const boss = this.physics.add.sprite($world.width / 2, bat.y - 500, 'boss')
           .setAlpha(0)
@@ -168,6 +170,9 @@ const game = new Phaser.Game({
         const phase1 = () => {
           $world.showBoss = true
           boss.anims.play('phase1')
+
+          jetons.children.iterate(jeton => jeton.setVelocityY(scrollVelocity * -1))
+
           let tween
 
           this.tweens.add({
@@ -226,7 +231,15 @@ const game = new Phaser.Game({
             if ($world.bossLife <= 0) {
               theme()
               tween.stop()
+              bumpers.children.iterate(bumper => fadeout(bumper))
+              foes.children.iterate(foe => fadeout(foe))
+              shards.children.iterate(shard => fadeout(shard))
+
               this.cameras.main.shake(4000, 0.05, true)
+              setTimeout(() => {
+                bat.setVelocityY(scrollVelocity * 2)
+                bat.setCollideWorldBounds(false)
+              }, 1500)
 
               clearInterval(attack)
               fadeout(boss, 6000)
@@ -252,6 +265,8 @@ const game = new Phaser.Game({
       background(this, worldLength)
 
       bat = this.physics.add.sprite(360, 14400 - 200, 'bat')
+      bat.body.setCircle(30)
+      bat.body.setOffset(20, 20)
       bat.depth = 99
       bat.setCollideWorldBounds(true)
 
@@ -305,7 +320,7 @@ const game = new Phaser.Game({
 
         projectile.setCollideWorldBounds(true)
         projectile.setBounce(1)
-      }, 500)
+      }, 600)
 
       const damageFoe = (foe, projectile) => {
         hitSound()
@@ -357,6 +372,7 @@ const game = new Phaser.Game({
       })
 
       this.physics.add.collider(foes, shards, (foe, shard) => {
+        if (!shard.data.get('breakCystals')) return
         damageFoe(foe)
         shard.destroy()
       })
@@ -440,6 +456,8 @@ const game = new Phaser.Game({
           }
           $world.score *= 2
           $world.hasShield = true
+          $world.life = 3
+
           projectileScale += 0.4
 
           this.tweens.add({

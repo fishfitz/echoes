@@ -26,7 +26,7 @@ export default ({ game, shards, foes, bumpers, lights, jetons }) => {
   // Shards
 
   const shardVelocity = 400
-  const shard = (x, y, angle) => {
+  const shard = (x, y, angle, breakCystals = true) => {
     const entity = game.physics.add.sprite(x + 20, y, 'shard')
     shards.add(entity)
 
@@ -35,6 +35,10 @@ export default ({ game, shards, foes, bumpers, lights, jetons }) => {
 
     entity.body.onWorldBounds = true
     entity.setCollideWorldBounds(true)
+
+    entity.setDataEnabled()
+    entity.data.set('breakCystals', breakCystals)
+
     return entity
   }
 
@@ -81,7 +85,7 @@ export default ({ game, shards, foes, bumpers, lights, jetons }) => {
     return entity
   }
 
-  lvl1.small.forEach(({ x, y }) => foes.add(smallRock(x, y)))
+  lvl1.small.forEach(({ x, y }) => Math.random() < 0.9 ? foes.add(smallRock(x, y)) : null)
 
   // Medium rocks
 
@@ -144,7 +148,7 @@ export default ({ game, shards, foes, bumpers, lights, jetons }) => {
     return entity
   }
 
-  lvl1.medium.forEach(({ x, y }) => foes.add(mediumRock(x, y)))
+  lvl1.medium.forEach(({ x, y }) => Math.random() < 0.66 ? foes.add(mediumRock(x, y)) : null)
 
   // Bumpers
 
@@ -198,7 +202,7 @@ export default ({ game, shards, foes, bumpers, lights, jetons }) => {
     return entity
   }
 
-  lvl1.lights.forEach(({ x, y }) => lights.add(light(x, y)))
+  lvl1.lights.forEach(({ x, y }) => Math.random() < 0.75 ? lights.add(light(x, y)) : null)
 
   return {
     spawnShard: shard,
